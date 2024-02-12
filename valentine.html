@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Celebration</title> <!-- Updated title -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #fce4ec; /* Light Pink */
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d81b60; /* Dark Pink */
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #ff4081; /* Pink */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #f50057; /* Darker Pink on Hover */
+        }
+
+        #container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #loveParagraph {
+            text-align: left;
+            width: 65%;
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #ffc4e0; /* Lighter Pink */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #bottomEmojis {
+            font-size: 24px;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            pointer-events: none;
+            background-image: url('confetti.png'); /* Replace with your confetti image */
+            background-size: cover;
+            animation: confetti-fall 5s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .heart-rain {
+            position: absolute;
+            animation: falling 2s linear infinite;
+        }
+
+        @keyframes falling {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will You Be My Valentine?</h1>
+
+    <div id="container">
+        <div id="loveParagraph">
+            <p><strong>Why I Love Her:</strong></p>
+            <p>I love her because she's not just cute, she's the definition of adorable. Her intelligence is a beacon of light in my life, guiding me through challenges. The humor she carries is not just laughter; it's a melody that fills my days with joy. Her presence has the magical ability to brighten even the gloomiest moments, and for that, I am eternally grateful. Every day spent with her feels like a cherished chapter in a beautiful story, and I can't wait to create more memories together. Happy Valentine's Day, my love! 🌹💖🥰</p>
+        </div>
+    </div>
+
+    <button id="yesButton" onclick="celebrate()">Yes</button>
+    <button id="noButton" onclick="convinceNo()">No</button>
+
+    <div id="bottomEmojis"></div>
+    <div id="confetti"></div>
+
+    <script>
+        let yesButton = document.getElementById('yesButton');
+        let noButton = document.getElementById('noButton');
+        let bottomEmojis = document.getElementById('bottomEmojis');
+        let confetti = document.getElementById('confetti');
+        let growthFactor = 1;
+
+        function celebrate() {
+            alert('I LOVE YOU, PRINCESS!');
+            confetti.style.display = 'block';
+            setTimeout(() => {
+                confetti.style.display = 'none';
+            }, 5000);
+
+            // Add more heart and kiss emojis to the bottom
+            for (let i = 0; i < 100; i++) {
+                let heart = document.createElement('span');
+                heart.innerHTML = '💖💋';
+                heart.className = 'heart-rain';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                bottomEmojis.appendChild(heart);
+            }
+        }
+
+        function convinceNo() {
+            growthFactor += 0.2;
+            yesButton.style.transform = 'scale(' + growthFactor + ')';
+            noButton.innerText = getConvincingWords();
+        }
+
+        function getConvincingWords() {
+            const convincingWords = [
+                "Aw, come on!",
+                "Don't be heartless!",
+                "Give love a chance!",
+                "You're my missing puzzle piece!",
+                "Love is in the air!",
+                "I bear-ly can wait for you to say yes!",
+                "Cupid's arrow has struck my heart!",
+                "Let's make it a date!",
+                "I promise it'll be beary fun!",
+                "You're un-bear-ably awesome!",
+                "Love me like you love chocolate!"
+            ];
+
+            return convincingWords[Math.floor(Math.random() * convincingWords.length)];
+        }
+    </script>
+
+</body>
+</html>
